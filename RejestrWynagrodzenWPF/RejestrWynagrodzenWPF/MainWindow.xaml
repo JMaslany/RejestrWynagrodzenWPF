@@ -1,0 +1,78 @@
+﻿<Window x:Class="RejestrWynagrodzenWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RejestrWynagrodzenWPF"
+        mc:Ignorable="d"
+        Title="Kalkulator i Rejestr Wynagrodzeń" Height="370" Width="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Column="0" Grid.RowSpan="2" >
+            <GroupBox.Header>
+                <Label>Dane Wejściowe</Label>
+            </GroupBox.Header>
+            <StackPanel>
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Wynagrodzenie brutto w PLN</Label>
+                    </GroupBox.Header>
+                    <TextBox x:Name="wynagrodzenie" Margin="10px 5px"></TextBox>
+                </GroupBox>
+
+             
+                
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Rodzaj umowy</Label>
+                    </GroupBox.Header>
+                    <StackPanel Margin="5px">
+                        <RadioButton x:Name="praca" GroupName="rodzajUmowy" Margin="0 0 0 5px" IsChecked="True">Umowa o pracę</RadioButton>
+                    <RadioButton x:Name="zlecenie" GroupName="rodzajUmowy">Umowa zlecenie</RadioButton>
+                    </StackPanel>
+                </GroupBox>
+
+
+                <CheckBox x:Name="ulga" Margin="10px" >Ulga dla młodych &lt;26 lat</CheckBox>
+                <Button x:Name="btn" Margin="20px 30px" Padding="20px" FontSize="20px" FontWeight="Bold" Background="CadetBlue" Foreground="White" Click="btn_Click">OBLICZ I ZAPISZ</Button>
+                
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1">
+            <GroupBox.Header>
+                <Label>Wyniki i Historia</Label>
+            </GroupBox.Header>
+            <StackPanel>
+                <TextBlock x:Name="WynagrodzenieNetto" Margin="0 10px" FontSize="20px" TextAlignment="Center" FontWeight="Bold" Foreground="Green">Wynagrodzenie netto: ...</TextBlock>
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Szczegóły Składek i Podatków</Label>
+                    </GroupBox.Header>
+                    <StackPanel Margin="20px 0">
+                        <TextBlock x:Name="zus" Margin="0 2px">Składki ZUS (społeczne): ...</TextBlock>
+                        <TextBlock x:Name="zdrowotna" Margin="0 2px">Składka zdrowotna: ...</TextBlock>
+                        <TextBlock x:Name="pit" Margin="0 2px">Zaliczka na podatek PIT: ...</TextBlock>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Rejestr Wynagrodzeń</Label>
+                    </GroupBox.Header>
+                    <DataGrid x:Name="rejestr" Height="130px" MaxHeight="130px">
+                        
+                    </DataGrid>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+        
+    </Grid>
+</Window>
